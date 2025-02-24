@@ -33,8 +33,8 @@ export class PaymentsService {
       },
       line_items: lineItems,
       mode: 'payment',
-      success_url: 'http://localhost:3003/payments/success',
-      cancel_url: 'http://localhost:3003/payments/cancel',
+      success_url: envs.stripeSuccessUrl,
+      cancel_url: envs.stripeCancelUrl,
     });
 
     return session;
@@ -44,13 +44,8 @@ export class PaymentsService {
     const sig = req.headers['stripe-signature'];
 
     let event: Stripe.Event;
-    // Testing
-    /*  const endpointSecret =
-      'whsec_bd2fbba33aa5782c0eeaa89580668766a22e2696d8ae9ba635962d50a5a31b02';
-    */
 
-    // Real
-    const endpointSecret = 'whsec_JOOdt0ajB6vFJtxvQ4lIL31V0jI8BoWT';
+    const endpointSecret = envs.stripeEndpointSecret;
 
     try {
       event = this.stripe.webhooks.constructEvent(
