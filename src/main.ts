@@ -26,7 +26,7 @@ async function bootstrap() {
   });
 
   await app.startAllMicroservices();
-  
+
   await app.listen(envs.port);
 
   logger.log(`Server is running on: ${envs.port}`);
