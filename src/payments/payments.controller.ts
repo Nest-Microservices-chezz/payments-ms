@@ -2,15 +2,22 @@ import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { retry } from 'rxjs';
 import { PaymentSessionDto } from './dto/payment-session.dto';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller('payments')
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
+<<<<<<< Updated upstream
   // ESTAS EN RAMA
   @Post('create-payment-session')
+=======
+  // @Post('create-payment-session')
+  @MessagePattern('create.payment.session')
+>>>>>>> Stashed changes
   createPaymentSession(@Body() paymentSessionDto: PaymentSessionDto) {
-    return this.paymentsService.createPaymentSession(paymentSessionDto);
+    return paymentSessionDto;
+    //return this.paymentsService.createPaymentSession(paymentSessionDto);
   }
 
   @Get('success')
