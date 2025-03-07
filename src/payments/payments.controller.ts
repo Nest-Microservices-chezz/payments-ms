@@ -8,13 +8,8 @@ import { MessagePattern } from '@nestjs/microservices';
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
-<<<<<<< Updated upstream
-  // ESTAS EN RAMA
-  @Post('create-payment-session')
-=======
   // @Post('create-payment-session')
   @MessagePattern('create.payment.session')
->>>>>>> Stashed changes
   createPaymentSession(@Body() paymentSessionDto: PaymentSessionDto) {
     return paymentSessionDto;
     //return this.paymentsService.createPaymentSession(paymentSessionDto);
