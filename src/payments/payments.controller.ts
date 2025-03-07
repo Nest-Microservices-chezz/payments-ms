@@ -7,6 +7,7 @@ import { PaymentSessionDto } from './dto/payment-session.dto';
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
+  // ESTAS EN RAMA
   @Post('create-payment-session')
   createPaymentSession(@Body() paymentSessionDto: PaymentSessionDto) {
     return this.paymentsService.createPaymentSession(paymentSessionDto);
